@@ -11,6 +11,7 @@
  #include<dos.h>
  #include<string.h>
 
+ // Structure to define discs
  struct disc{
    int x , y ;
    int san , ean ;
@@ -86,6 +87,7 @@ char ch[2] , msg[80] ;
    closegraph();
    restorecrtmode() ;
  }
+
 void play(void){
    int ans , i , dis , j , task ,dir , l , score = 0 ;
    struct disc disk[4]  ;
@@ -147,6 +149,8 @@ void play(void){
    }
    result(score);
 }
+
+// Function which provide randomness to discs
 void drw(struct disc *d){
    int temp , r = rand()%12+2;
    switch(d->mode){
@@ -178,6 +182,8 @@ void drw(struct disc *d){
       ellipse(d->x,d->y,d->ean,d->san,d->rad,d->rad);
    }
 }
+
+// Function to welcome the user
 void welcome(void){
   setbkcolor(2);
   settextstyle(1,0,5);
@@ -194,6 +200,8 @@ void welcome(void){
   delay(1000);
   settextstyle(0,0,1);
 }
+
+// Fucntion to define game structure
 void border(void){
   setbkcolor(0);
   setcolor(15);
@@ -205,6 +213,8 @@ void border(void){
   line(0,478,639,478) ;
   setlinestyle(0,1,1);
 }
+
+// Function to display and store the score of player
 void result(int score){
    int l = 5 ;
    char dat[80],flaag='0';
@@ -249,6 +259,8 @@ void result(int score){
    rename("temp","Score_List");
    delay(10000);
 }
+
+// Function to display player's achievements
 void record(FILE *f,int l,int score){
    char *name ,single;
    sprintf(msg,"You got %d rank",l);
@@ -260,6 +272,8 @@ void record(FILE *f,int l,int score){
    sprintf(msg,"%d %s\n",score,name);
    fputs(msg,f);
 }
+
+// Function to Display sidebar
 void sidebar1(){
     border() ;
     setfillstyle(1,0);
@@ -284,11 +298,15 @@ void design(void){
   w=3 ;
   for(q=476;q>2;q -= 5,w += 5) line(3,q,w,3);
 }
+
+// Function to clear device screen and display game layout with design.
 void layout1(void){
   cleardevice();
   design();
   sidebar1();
 }
+
+// Function to display the high score 
 void score_list(void){
   int l =239;
   char *ptr1 ,*ptr;
