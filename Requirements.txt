@@ -1,0 +1,9 @@
+Version 1 : Following C header files are required along with Turbo C/C++ compiler and IDE.
+1. ctype.h
+2. stdlib.h
+3. stdio.h
+4. string.h
+5. conio.h
+6. dos.h
+7. graphics.h
+Requirments 5 to 7 are obsolete.
